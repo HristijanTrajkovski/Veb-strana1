@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset = "utf-8">
+ <title> Блог </title>
+ <style type ="text/css">
+ body{
+    background-color: gainsboro;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color:lightgray;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float:left;
+  color:black;
+  text-align: center;
+  padding: 30px 32px;
+  text-decoration: none;
+  font-size:25px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color:gray;
+  color:black;
+}
+/* Dropdown Button */
+.dropbtn {
+  background-color:lightgray;
+  color: black;
+  padding: 30px 32px;
+  font-size: 25px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: static; 
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display:none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 30px 32px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Bojata na pagjackoto meni */
+.dropdown-content a:hover {background-color:white}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Bojata na pagjackoto meni koga kje se otvori */
+.dropdown:hover .dropbtn {background-color:gray;}
+ img {
+     margin: 10px;
+     border-style:none;
+ }
+ h1{
+     color: green;
+     font-size: 75px;
+ }
+ h3
+{
+   color: green;
+     font-size: 75px; 
+}
+ nav{
+     color:green;
+     text-align: justify;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     width: 85%;
+ }
+ /* .input {
+       
+        display: block;
+        margin-top: 30px;
+        margin-left: 25%;
+        margin-right: auto; 
+       
+      }*/
+    textarea  {
+        
+        margin-top: 30px;
+        margin-left:25%;
+        margin-right: auto;
+        width: 800px;
+        height: 150px;
+        padding: 12px 20px;
+  
+}
+      .btn {
+        margin-left: 25%;
+        width:100px;
+        height:50px;
+      }
+      .container label{
+        display: inline-block;
+        font-size: large;
+        display: flex;
+  flex-direction: column-reverse;
+      }
+ </style>
+ </head>
+ 
+ 
+ <body onload="load()">
+    <nav>
+        <div class="topnav">
+            <a  href="doma.html">За Мене</a>
+            <a href="galerija.html">Галерија</a>
+            <a href="anketa.html">Анкета</a>
+            <a class="active" href="blog.html">Блог</a>
+            <div class="dropdown">
+                <button class="dropbtn">Омилени Работи</button>
+                <div class="dropdown-content">
+                  <a href="filmovi.html">Филмови</a>
+                  <a href="serii.html">Серии</a>
+                  <a href="muzika.html">Музика</a>
+                </div>
+              </div>
+          </div>
+        </nav>
+        <div id="first" class="container">
+           <!---- <input class="input" type="text" id="comm1">--->
+           <textarea name="Comment" id="comm21" cols="30" rows="10"></textarea>
+            <button class="btn" onclick="storeComm21()">Post</button>
+            <br /><br />
+            <div id="labels21" class="labelsAll"></div>
+          </div>
+ </body>
+ </html>
+
+    <script>
+        var comments21;
+       
+  
+        if (window.localStorage.getItem("comment21")) {
+          comments21 = JSON.parse(window.localStorage.getItem("comment21"));
+        } else {
+          comments21 = [];
+        }
+        function storeComm21() {
+        var date = new Date().toLocaleString();
+        var singleComment = { value: comm21.value, date: date };
+
+        comments21.push(singleComment);
+        console.log(comments21);
+        window.localStorage.setItem("comment21", JSON.stringify(comments21));
+
+        load();
+      }
+
+      function load() {
+        var first = document.getElementById("labels21");
+        while (first.firstChild) {
+          first.removeChild(first.lastChild);
+        }
+
+
+        var comments21 = JSON.parse(window.localStorage.getItem("comment21"));
+
+        console.log(comments21);
+        if (comments21) {
+          comments21.forEach((element) => {
+            var y = document.createElement("LABEL");
+            var x = document.createElement("BR");
+            var p = document.createElement("BR");
+            var z = document.createElement("LABEL");
+
+            var node = document.createTextNode(element.value);
+            var nodeDate = document.createTextNode(element.date);
+            y.style.fontWeight = "bold";
+            y.appendChild(node);
+            z.appendChild(nodeDate);
+
+            document.getElementById("labels21").appendChild(y);
+            document.getElementById("labels21").appendChild(x);
+            document.getElementById("labels21").appendChild(p);
+            document.getElementById("labels21").appendChild(z);
+            document.getElementById("labels21").appendChild(x);
+          });
+        }
+      }
+        </script>

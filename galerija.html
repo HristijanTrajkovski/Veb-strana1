@@ -140,9 +140,10 @@
   <body onload="load()">
     <nav>
       <div class="topnav">
-        <a class="active" href="doma.html">За Мене</a>
-        <a href="galerija.html">Галерија</a>
+        <a href="doma.html">За Мене</a>
+        <a class="active" href="galerija.html">Галерија</a>
         <a href="anketa.html">Анкета</a>
+        <a href="blog.html">Блог</a>
         <div class="dropdown">
           <button class="dropbtn">Омилени Работи</button>
           <div class="dropdown-content">
@@ -165,8 +166,8 @@
           <label id="counter1"></label>
         </div>
         <div id="first" class="container">
-          <input class="input" type="text" id="comm1" />
-          <button class="btn" onclick="storeComm1()">Comment</button>
+          <input class="input" type="text" id="comm11" />
+          <button class="btn" onclick="storeComm11()">Comment</button>
           <br /><br />
           <div id="labels1" class="labelsAll"></div>
         </div>
@@ -184,8 +185,8 @@
           <label id="counter2"></label>
         </div>
         <div id="second" class="container">
-          <input class="input" type="text" id="comm2" />
-          <button class="btn" onclick="storeComm2()">Comment</button>
+          <input class="input" type="text" id="comm22" />
+          <button class="btn" onclick="storeComm22()">Comment</button>
           <br /><br />
           <div id="labels2" class="labelsAll"></div>
         </div>
@@ -203,8 +204,8 @@
           <label id="counter3"></label>
         </div>
         <div id="third" class="container">
-          <input class="input" type="text" id="comm3" />
-          <button class="btn" onclick="storeComm3()">Comment</button>
+          <input class="input" type="text" id="comm33" />
+          <button class="btn" onclick="storeComm33()">Comment</button>
           <br /><br />
           <div id="labels3" class="labelsAll"></div>
         </div>
@@ -213,33 +214,33 @@
     </div>
 
     <script>
-      var comments1;
-      var comments2;
-      var comments3;
+      var comments11;
+      var comments22;
+      var comments33;
 
-      if (window.localStorage.getItem("comment1")) {
-        comments1 = JSON.parse(window.localStorage.getItem("comment1"));
+      if (window.localStorage.getItem("comment11")) {
+        comments11 = JSON.parse(window.localStorage.getItem("comment11"));
       } else {
-        comments1 = [];
+        comments11 = [];
       }
-      if (window.localStorage.getItem("comment2")) {
-        comments2 = JSON.parse(window.localStorage.getItem("comment2"));
+      if (window.localStorage.getItem("comment22")) {
+        comments22 = JSON.parse(window.localStorage.getItem("comment22"));
       } else {
-        comments2 = [];
+        comments22 = [];
       }
-      if (window.localStorage.getItem("comment3")) {
-        comments3 = JSON.parse(window.localStorage.getItem("comment3"));
+      if (window.localStorage.getItem("comment33")) {
+        comments33 = JSON.parse(window.localStorage.getItem("comment33"));
       } else {
-        comments3 = [];
+        comments33 = [];
       }
 
       var like1 = document.getElementById("like1");
       var like2 = document.getElementById("like2");
       var like3 = document.getElementById("like3");
 
-      var comm1 = document.getElementById("comm1");
-      var comm2 = document.getElementById("comm2");
-      var comm3 = document.getElementById("comm3");
+      var comm11 = document.getElementById("comm11");
+      var comm22 = document.getElementById("comm22");
+      var comm33 = document.getElementById("comm33");
 
       var counter1 = document.getElementById("counter1");
       var counter2 = document.getElementById("counter2");
@@ -270,35 +271,35 @@
         Toggle(event);
       }
 
-      function storeComm1() {
+      function storeComm11() {
         var date = new Date().toLocaleString();
-        var singleComment = { value: comm1.value, date: date };
+        var singleComment = { value: comm11.value, date: date };
 
-        comments1.push(singleComment);
-        console.log(comments1);
-        window.localStorage.setItem("comment1", JSON.stringify(comments1));
+        comments11.push(singleComment);
+        console.log(comments11);
+        window.localStorage.setItem("comment11", JSON.stringify(comments11));
 
         load();
       }
 
-      function storeComm2() {
+      function storeComm22() {
         var date = new Date().toLocaleString();
-        var singleComment2 = { value: comm2.value, date: date };
+        var singleComment2 = { value: comm22.value, date: date };
 
-        comments2.push(singleComment2);
-        console.log(comments2);
-        window.localStorage.setItem("comment2", JSON.stringify(comments2));
+        comments22.push(singleComment2);
+        console.log(comments22);
+        window.localStorage.setItem("comment22", JSON.stringify(comments22));
 
         load();
       }
 
-      function storeComm3() {
+      function storeComm33() {
         var date = new Date().toLocaleString();
-        var singleComment3 = { value: comm3.value, date: date };
+        var singleComment3 = { value: comm33.value, date: date };
 
-        comments3.push(singleComment3);
-        console.log(comments3);
-        window.localStorage.setItem("comment3", JSON.stringify(comments3));
+        comments33.push(singleComment3);
+        console.log(comments33);
+        window.localStorage.setItem("comment33", JSON.stringify(comments33));
 
         load();
       }
@@ -319,13 +320,13 @@
           third.removeChild(third.lastChild);
         }
 
-        var comments1 = JSON.parse(window.localStorage.getItem("comment1"));
-        var comments2 = JSON.parse(window.localStorage.getItem("comment2"));
-        var comments3 = JSON.parse(window.localStorage.getItem("comment3"));
+        var comments11 = JSON.parse(window.localStorage.getItem("comment11"));
+        var comments22 = JSON.parse(window.localStorage.getItem("comment22"));
+        var comments33 = JSON.parse(window.localStorage.getItem("comment33"));
 
-        console.log(comments1);
-        if (comments1) {
-          comments1.forEach((element) => {
+        console.log(comments11);
+        if (comments11) {
+          comments11.forEach((element) => {
             var y = document.createElement("LABEL");
             var x = document.createElement("BR");
             var p = document.createElement("BR");
@@ -345,8 +346,8 @@
           });
         }
 
-        if (comments2) {
-          comments2.forEach((element) => {
+        if (comments22) {
+          comments22.forEach((element) => {
             var y = document.createElement("LABEL");
             var x = document.createElement("BR");
             var p = document.createElement("BR");
@@ -368,8 +369,8 @@
           });
         }
 
-        if (comments3) {
-          comments3.forEach((element) => {
+        if (comments33) {
+          comments33.forEach((element) => {
             var y = document.createElement("LABEL");
             var x = document.createElement("BR");
             var p = document.createElement("BR");
